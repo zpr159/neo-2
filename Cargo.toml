@@ -1,0 +1,146 @@
+# Neo — Rust Workspace Root
+#
+# This Cargo workspace defines all Rust crates in the Neo monorepo.
+# Each crate is self-contained with its own Cargo.toml, but shares
+# dependency versions and workspace-level configuration here.
+
+[workspace]
+resolver = "2"
+
+members = [
+    "core/rust/neo-core",
+    "runtime/rust/neo-runtime",
+    "neural-engine/rust/neo-neural-engine",
+    "neural-network-framework/rust/neo-nn-framework",
+    "inference/rust/neo-inference",
+    "memory/rust/neo-memory",
+    "knowledge-graph/rust/neo-knowledge-graph",
+    "reasoning/rust/neo-reasoning",
+    "executive/rust/neo-executive",
+    "apps/neo-cli",
+    "capabilities/rust/neo-capabilities",
+    "agents/rust/neo-agents",
+    "workflows/rust/neo-workflows",
+    "tools/rust/neo-tools",
+    "distributed/rust/neo-distributed",
+    "robotics/rust/neo-robotics",
+    "business/rust/neo-business",
+    "security/rust/neo-security",
+    "plugins/rust/neo-plugins",
+    "testing/rust/neo-test",
+    "sdk/rust/neo-sdk",
+    "planning/rust/neo-planning",
+    "learning/rust/neo-learning",
+    "evolution/rust/neo-evolution",
+    "world/rust/neo-world",
+    "conversation/rust/neo-conversation",
+]
+
+default-members = [
+    "core/rust/neo-core",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75.0"
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/neo-agi/neo"
+authors = ["Neo AGI Project"]
+description = "Neo AGI Operating System"
+
+[workspace.dependencies]
+# Internal crates
+neo-core = { path = "core/rust/neo-core" }
+neo-evolution = { path = "evolution/rust/neo-evolution" }
+
+# Async runtime
+tokio = { version = "1.36", features = ["full"] }
+async-trait = "0.1"
+futures = "0.3"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bincode = "1.3"
+toml = "0.8"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging and tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+tracing-appender = "0.2"
+
+# Configuration
+config = "0.14"
+
+# Cryptography
+sha2 = "0.10"
+aes-gcm = "0.10"
+ed25519-dalek = "2.1"
+x25519-dalek = "2.0"
+
+# Networking
+tonic = "0.11"
+prost = "0.12"
+hyper = "1.1"
+reqwest = { version = "0.12", features = ["json"] }
+
+# Database / Storage
+sled = "0.34"
+rusqlite = { version = "0.31", features = ["bundled"] }
+
+# Utilities
+uuid = { version = "1.8", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+rand = "0.8"
+dashmap = "5.5"
+parking_lot = "0.12"
+bytes = "1.5"
+bitflags = "2.4"
+enum_dispatch = "0.3"
+strum = { version = "0.26", features = ["derive"] }
+derive_more = { version = "1.0", features = ["full"] }
+
+# Testing
+criterion = { version = "0.5", features = ["html_reports"] }
+proptest = "1.4"
+mockall = "0.12"
+assert_cmd = "2.0"
+tempfile = "3.10"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+unreachable_pub = "warn"
+unused_crate_dependencies = "warn"
+unused_must_use = "warn"
+rust_2018_idioms = "warn"
+missing_debug_implementations = "warn"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+pedantic = "warn"
+nursery = "warn"
+unwrap_used = "warn"
+expect_used = "warn"
+panic = "warn"
+todo = "warn"
+fixme = "warn"
+module_name_repetitions = "warn"
+must_use_candidate = "warn"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+
+[profile.dev]
+opt-level = 0
+split-debuginfo = "unpacked"
+
+[profile.dev.package."*"]
+opt-level = 2

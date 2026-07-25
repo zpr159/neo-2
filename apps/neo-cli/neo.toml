@@ -1,0 +1,47 @@
+# Neo AGI OS — Default Configuration
+#
+# Environment variable overrides:
+#   NEO_ENVIRONMENT  - Core environment (development/production)
+#   NEO_DEBUG        - Debug mode (true/false)
+#   NEO_LOG_LEVEL    - Log level (trace/debug/info/warn/error)
+#   NEO_PORT         - Network port
+#   NEO_BIND_ADDRESS - Bind address
+#   NEO_DATA_DIR     - Data directory
+#   NEO_LOG_DIR      - Log directory
+
+[core]
+environment = "development"
+debug = true
+data_dir = "./data"
+
+[logging]
+level = "info"
+format = "pretty"
+output = "stdout"
+enable_file_logging = true
+log_dir = "./logs"
+max_file_size_mb = 100
+max_files = 10
+
+[network]
+bind_address = "127.0.0.1"
+port = 8080
+
+[shell]
+history_size = 10000
+enable_completion = true
+prompt = "neo> "
+
+[server]
+enable_rest = true
+enable_websocket = true
+enable_grpc = false
+max_connections = 128
+request_timeout_secs = 30
+
+[daemon]
+pid_file = "./neo.pid"
+auto_restart = true
+max_restart_attempts = 3
+restart_delay_secs = 5
+watchdog_interval_secs = 10

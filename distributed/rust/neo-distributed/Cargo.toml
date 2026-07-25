@@ -1,0 +1,32 @@
+[package]
+name = "neo-distributed"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Distributed computing and cluster management"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+tokio.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+bincode.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+dashmap.workspace = true
+parking_lot.workspace = true
+bytes.workspace = true
+rand.workspace = true
+tonic.workspace = true
+prost.workspace = true
+sha2.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio = { workspace = true, features = ["full", "test-util"] }

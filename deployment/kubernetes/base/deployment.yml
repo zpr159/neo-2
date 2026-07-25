@@ -1,0 +1,133 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neo-executive
+  namespace: neo
+  labels:
+    app: neo-executive
+    component: executive
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: neo-executive
+  template:
+    metadata:
+      labels:
+        app: neo-executive
+        component: executive
+    spec:
+      serviceAccountName: neo-executive
+      containers:
+        - name: neo-executive
+          image: ghcr.io/neo-agi/neo:latest
+          args: ["neo-executive", "--config", "/etc/neo/config/production.toml"]
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: NEO_ENV
+              value: production
+            - name: RUST_LOG
+              value: "warn"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "4"
+              memory: "8Gi"
+          volumeMounts:
+            - name: config
+              mountPath: /etc/neo/config
+              readOnly: true
+            - name: data
+              mountPath: /data/neo
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      volumes:
+        - name: config
+          configMap:
+            name: neo-config
+        - name: data
+          persistentVolumeClaim:
+            claimName: neo-data
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: neo-executive
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neo-executive
+  namespace: neo
+spec:
+  selector:
+    app: neo-executive
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: grpc
+      port: 9090
+      targetPort: grpc
+  type: ClusterIP
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: neo-executive
+  namespace: neo
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: neo-config
+  namespace: neo
+data:
+  production.toml: |
+    [core]
+    environment = "production"
+    debug = false
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: neo-data
+  namespace: neo
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: fast-ssd
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: neo-executive
+  namespace: neo
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: neo-executive

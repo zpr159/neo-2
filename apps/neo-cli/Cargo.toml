@@ -1,0 +1,39 @@
+[package]
+name = "neo-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Command-line interface and application entry point"
+
+[[bin]]
+name = "neo"
+path = "src/main.rs"
+
+[dependencies]
+neo-runtime = { path = "../../runtime/rust/neo-runtime" }
+neo-executive = { path = "../../executive/rust/neo-executive" }
+neo-memory = { path = "../../memory/rust/neo-memory" }
+neo-knowledge-graph = { path = "../../knowledge-graph/rust/neo-knowledge-graph" }
+neo-reasoning = { path = "../../reasoning/rust/neo-reasoning" }
+neo-inference = { path = "../../inference/rust/neo-inference" }
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+clap = { version = "4.5", features = ["derive", "env", "unicode", "wrap_help"] }
+rustyline = { version = "14.0", features = ["with-file-history"] }
+dirs = "5.0"
+
+[dev-dependencies]
+tempfile.workspace = true
+assert_cmd = "2.0"
+predicates = "3.0"
+
+[lints]
+workspace = true

@@ -1,0 +1,46 @@
+# CODEOWNERS — Automatic review assignment
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything
+* @neo-agi/core-maintainers
+
+# Core subsystem
+/core/ @neo-agi/core-team
+/runtime/ @neo-agi/core-team
+
+# Neural engine and ML
+/neural-engine/ @neo-agi/neural-team
+/neural-network-framework/ @neo-agi/neural-team
+/inference/ @neo-agi/neural-team
+
+# Knowledge and reasoning
+/memory/ @neo-agi/reasoning-team
+/knowledge-graph/ @neo-agi/reasoning-team
+/reasoning/ @neo-agi/reasoning-team
+
+# Agents and execution
+/executive/ @neo-agi/agents-team
+/capabilities/ @neo-agi/agents-team
+/agents/ @neo-agi/agents-team
+/workflows/ @neo-agi/agents-team
+/tools/ @neo-agi/agents-team
+
+# Distributed systems
+/distributed/ @neo-agi/infra-team
+
+# Domain-specific
+/robotics/ @neo-agi/robotics-team
+/business/ @neo-agi/business-team
+
+# Security
+/security/ @neo-agi/security-team
+
+# UI and SDK
+/ui/ @neo-agi/ui-team
+/sdk/ @neo-agi/sdk-team
+
+# Infrastructure
+/deployment/ @neo-agi/infra-team
+/.github/ @neo-agi/infra-team
+/scripts/ @neo-agi/infra-team
+/config/ @neo-agi/infra-team

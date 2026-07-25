@@ -1,0 +1,53 @@
+[package]
+name = "neo-learning"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Autonomous Learning System"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-runtime = { path = "../../../runtime/rust/neo-runtime" }
+neo-reasoning = { path = "../../../reasoning/rust/neo-reasoning" }
+neo-memory = { path = "../../../memory/rust/neo-memory" }
+neo-knowledge-graph = { path = "../../../knowledge-graph/rust/neo-knowledge-graph" }
+neo-capabilities = { path = "../../../capabilities/rust/neo-capabilities" }
+neo-workflows = { path = "../../../workflows/rust/neo-workflows" }
+neo-agents = { path = "../../../agents/rust/neo-agents" }
+neo-tools = { path = "../../../tools/rust/neo-tools" }
+neo-planning = { path = "../../../planning/rust/neo-planning" }
+tokio.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+dashmap.workspace = true
+parking_lot.workspace = true
+strsim = "0.11"
+petgraph = "0.6"
+rayon = "1.0"
+log4rs = "1.0"
+
+[features]
+default = ["persistence", "analytics"]
+all = ["persistence", "analytics", "pattern_mining", "skill_extraction"]
+persistence = []
+analytics = []
+pattern_mining = []
+skill_extraction = []
+
+[dev-dependencies]
+neo-test = { path = "../../../testing/rust/neo-test" }
+tokio = { workspace = true, features = ["full", "test-util"] }
+tempfile.workspace = true
+criterion = { workspace = true, features = ["html_reports"] }
+quickcheck = "1.0"
+
+[lints]
+workspace = true

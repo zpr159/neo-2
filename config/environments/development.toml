@@ -1,0 +1,89 @@
+# Neo Configuration — Development Profile
+#
+# This is the default configuration for local development.
+# Override any value via environment variables: NEO_<SECTION>_<KEY>
+# Example: NEO_LOGGING_LEVEL=debug
+
+[core]
+version = "0.1.0"
+environment = "development"
+debug = true
+worker_threads = 4
+
+[runtime]
+max_memory_mb = 2048
+enable_wasm = true
+sandbox_mode = "permissive"
+task_timeout_secs = 300
+
+[neural]
+device = "cpu"
+batch_size = 32
+model_cache_size_mb = 512
+
+[inference]
+backend = "auto"
+max_concurrent_requests = 8
+request_timeout_secs = 60
+
+[memory]
+working_memory_size = 1024
+episodic_storage_path = "./data/episodic"
+semantic_storage_path = "./data/semantic"
+enable_embeddings = true
+
+[knowledge_graph]
+storage_path = "./data/knowledge_graph"
+enable_persistence = true
+cache_size_mb = 256
+
+[reasoning]
+max_chain_depth = 20
+enable_explanation = true
+timeout_secs = 120
+
+[executive]
+max_concurrent_goals = 16
+planning_horizon = 50
+scheduler_interval_ms = 100
+
+[agents]
+max_agents = 64
+heartbeat_interval_secs = 10
+enable_self_improvement = false
+
+[security]
+enable_mtls = false
+sandbox_level = "permissive"
+audit_logging = true
+encryption_at_rest = false
+
+[logging]
+level = "debug"
+format = "pretty"
+output = "stdout"
+enable_file_logging = true
+log_dir = "./logs"
+max_file_size_mb = 100
+max_files = 10
+enable_json = false
+
+[tracing]
+enabled = true
+endpoint = "http://localhost:4317"
+sample_rate = 1.0
+
+[network]
+bind_address = "127.0.0.1"
+port = 8080
+tls_enabled = false
+
+[distributed]
+enable_clustering = false
+node_discovery = "static"
+gossip_interval_ms = 1000
+
+[plugins]
+enabled = true
+plugin_dir = "./plugins"
+auto_discover = true

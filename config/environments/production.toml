@@ -1,0 +1,89 @@
+# Neo Configuration — Production Profile
+#
+# Full production configuration with maximum security and performance.
+# All secrets MUST be injected via environment variables.
+
+[core]
+version = "0.1.0"
+environment = "production"
+debug = false
+worker_threads = 0  # 0 = auto-detect CPU count
+
+[runtime]
+max_memory_mb = 0  # 0 = no limit (controlled by cgroups)
+enable_wasm = true
+sandbox_mode = "strict"
+task_timeout_secs = 60
+
+[neural]
+device = "auto"
+batch_size = 128
+model_cache_size_mb = 8192
+
+[inference]
+backend = "auto"
+max_concurrent_requests = 256
+request_timeout_secs = 30
+
+[memory]
+working_memory_size = 16384
+episodic_storage_path = "/data/neo/episodic"
+semantic_storage_path = "/data/neo/semantic"
+enable_embeddings = true
+
+[knowledge_graph]
+storage_path = "/data/neo/knowledge_graph"
+enable_persistence = true
+cache_size_mb = 4096
+
+[reasoning]
+max_chain_depth = 100
+enable_explanation = true
+timeout_secs = 600
+
+[executive]
+max_concurrent_goals = 512
+planning_horizon = 200
+scheduler_interval_ms = 10
+
+[agents]
+max_agents = 4096
+heartbeat_interval_secs = 3
+enable_self_improvement = true
+
+[security]
+enable_mtls = true
+sandbox_level = "strict"
+audit_logging = true
+encryption_at_rest = true
+
+[logging]
+level = "warn"
+format = "json"
+output = "file"
+enable_file_logging = true
+log_dir = "/var/log/neo"
+max_file_size_mb = 1000
+max_files = 50
+enable_json = true
+
+[tracing]
+enabled = true
+endpoint = "${OTEL_EXPORTER_OTLP_ENDPOINT}"
+sample_rate = 0.01
+
+[network]
+bind_address = "0.0.0.0"
+port = 8080
+tls_enabled = true
+
+[distributed]
+enable_clustering = true
+node_discovery = "kubernetes"
+gossip_interval_ms = 200
+seed_nodes = []
+
+[plugins]
+enabled = true
+plugin_dir = "/opt/neo/plugins"
+auto_discover = true

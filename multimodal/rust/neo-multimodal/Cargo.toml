@@ -1,0 +1,57 @@
+# [package]
+name = "neo-multimodal"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Multimodal Intelligence System"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-runtime = { path = "../../../runtime/rust/neo-runtime" }
+neo-planning = { path = "../../../planning/rust/neo-planning" }
+neo-learning = { path = "../../../learning/rust/neo-learning" }
+neo-reasoning = { path = "../../../reasoning/rust/neo-reasoning" }
+neo-memory = { path = "../../../memory/rust/neo-memory" }
+neo-capabilities = { path = "../../../capabilities/rust/neo-capabilities" }
+neo-workflows = { path = "../../../workflows/rust/neo-workflows" }
+tokio.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+ndarray = "0.25"
+image = "0.25"
+regex = "1.0"
+simple_asn1 = "0.6"
+aes = "0.8"
+criterion = { workspace = true, features = ["html_reports"] }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full", "test-util"] }
+tempfile.workspace = true
+mockall = "0.12"
+quickcheck = "1.0"
+
+[features]
+default = ["text", "image", "audio", "video", "ocr", "speech", "document", "streaming", "cache"]
+all = ["text", "image", "audio", "video", "ocr", "speech", "document", "streaming", "cache", "cloud", "video", "cloud"]
+text = []
+image = ["ndarray", "image"]
+audio = ["hound"]
+video = ["video-capture", "ffmpeg"]
+ocr = ["tesseract"]
+speech = ["whisper"]
+document = ["pdf", "doc", "pptx", "xlsx"]
+streaming = []
+cache = []
+cloud = ["aws-sdk-s3"]
+video = ["video-capture", "ffmpeg"]
+
+[lints]
+workspace = true

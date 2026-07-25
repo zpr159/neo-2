@@ -1,0 +1,13 @@
+[toolchain]
+channel = "stable"
+components = ["rustfmt", "clippy", "rust-src"]
+targets = ["x86_64-unknown-linux-gnu", "aarch64-unknown-linux-gnu"]
+
+[rust-analyzer]
+check.command = "clippy"
+check.allTargets = true
+check.allFeatures = true
+inlayHints.typeHints.enable = true
+inlayHints.parameterHints.enable = true
+inlayHints.chainingHints.enable = true
+procMacro.enable = true

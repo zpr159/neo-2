@@ -1,0 +1,47 @@
+[package]
+name = "neo-evolution"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Self-Evolution Infrastructure for continuous self-analysis, optimization, and improvement"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-runtime = { path = "../../../runtime/rust/neo-runtime" }
+neo-agents = { path = "../../../agents/rust/neo-agents" }
+# neo-planning = { path = "../../../planning/rust/neo-planning" }
+neo-memory = { path = "../../../memory/rust/neo-memory" }
+neo-knowledge-graph = { path = "../../../knowledge-graph/rust/neo-knowledge-graph" }
+neo-reasoning = { path = "../../../reasoning/rust/neo-reasoning" }
+neo-workflows = { path = "../../../workflows/rust/neo-workflows" }
+neo-distributed = { path = "../../../distributed/rust/neo-distributed" }
+neo-capabilities = { path = "../../../capabilities/rust/neo-capabilities" }
+neo-executive = { path = "../../../executive/rust/neo-executive" }
+# neo-learning depends on broken neo-planning; re-enable when upstream is fixed
+# neo-learning = { path = "../../../learning/rust/neo-learning" }
+neo-tools = { path = "../../../tools/rust/neo-tools" }
+tokio.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+parking_lot.workspace = true
+dashmap.workspace = true
+sha2.workspace = true
+bytes.workspace = true
+toml.workspace = true
+rand.workspace = true
+strum.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio.workspace = true
+
+[lints]
+workspace = true

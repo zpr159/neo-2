@@ -1,0 +1,84 @@
+# Neo Configuration — Testing Profile
+#
+# Configuration for CI and automated testing.
+# Uses in-memory storage and minimal resources.
+
+[core]
+version = "0.1.0"
+environment = "testing"
+debug = true
+worker_threads = 2
+
+[runtime]
+max_memory_mb = 512
+enable_wasm = false
+sandbox_mode = "off"
+task_timeout_secs = 10
+
+[neural]
+device = "cpu"
+batch_size = 4
+model_cache_size_mb = 64
+
+[inference]
+backend = "mock"
+max_concurrent_requests = 4
+request_timeout_secs = 5
+
+[memory]
+working_memory_size = 128
+episodic_storage_path = ""
+semantic_storage_path = ""
+enable_embeddings = false
+
+[knowledge_graph]
+storage_path = ""
+enable_persistence = false
+cache_size_mb = 32
+
+[reasoning]
+max_chain_depth = 10
+enable_explanation = true
+timeout_secs = 10
+
+[executive]
+max_concurrent_goals = 8
+planning_horizon = 20
+scheduler_interval_ms = 100
+
+[agents]
+max_agents = 16
+heartbeat_interval_secs = 30
+enable_self_improvement = false
+
+[security]
+enable_mtls = false
+sandbox_level = "off"
+audit_logging = false
+encryption_at_rest = false
+
+[logging]
+level = "trace"
+format = "pretty"
+output = "stdout"
+enable_file_logging = false
+log_dir = ""
+max_file_size_mb = 10
+max_files = 1
+enable_json = false
+
+[tracing]
+enabled = false
+
+[network]
+bind_address = "127.0.0.1"
+port = 0  # 0 = auto-assign
+tls_enabled = false
+
+[distributed]
+enable_clustering = false
+
+[plugins]
+enabled = false
+plugin_dir = ""
+auto_discover = false

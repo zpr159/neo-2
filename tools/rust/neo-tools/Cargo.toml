@@ -1,0 +1,32 @@
+[package]
+name = "neo-tools"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Tool ecosystem: registry, execution, sandboxing, permissions, and built-in integrations"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+tokio.workspace = true
+async-trait.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+dashmap.workspace = true
+parking_lot.workspace = true
+sha2.workspace = true
+strum.workspace = true
+reqwest.workspace = true
+walkdir = "2"
+glob = "0.3"
+hostname = "0.4"
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full", "test-util"] }
+tempfile.workspace = true
+
+[lints]
+workspace = true

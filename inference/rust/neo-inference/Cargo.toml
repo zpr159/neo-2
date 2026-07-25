@@ -1,0 +1,35 @@
+[package]
+name = "neo-inference"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Universal inference layer for running any modern AI model through a unified backend"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-neural-engine = { path = "../../../neural-engine/rust/neo-neural-engine" }
+neo-nn-framework = { path = "../../../neural-network-framework/rust/neo-nn-framework" }
+tokio.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+bincode.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+parking_lot.workspace = true
+dashmap.workspace = true
+sha2.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+reqwest.workspace = true
+bytes.workspace = true
+rand.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio = { workspace = true, features = ["full", "test-util"] }
+
+[lints]
+workspace = true

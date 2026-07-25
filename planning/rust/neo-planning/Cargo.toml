@@ -1,0 +1,41 @@
+[package]
+name = "neo-planning"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Strategic Planning System"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-runtime = { path = "../../../runtime/rust/neo-runtime" }
+neo-reasoning = { path = "../../../reasoning/rust/neo-reasoning" }
+neo-memory = { path = "../../../memory/rust/neo-memory" }
+neo-knowledge-graph = { path = "../../../knowledge-graph/rust/neo-knowledge-graph" }
+neo-capabilities = { path = "../../../capabilities/rust/neo-capabilities" }
+neo-workflows = { path = "../../../workflows/rust/neo-workflows" }
+neo-agents = { path = "../../../agents/rust/neo-agents" }
+neo-tools = { path = "../../../tools/rust/neo-tools" }
+
+tokio.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+dashmap.workspace = true
+parking_lot.workspace = true
+strum.workspace = true
+derive_more.workspace = true
+petgraph = "0.6"
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full", "test-util"] }
+tempfile.workspace = true
+
+[lints]
+workspace = true

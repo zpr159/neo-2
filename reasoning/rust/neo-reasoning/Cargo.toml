@@ -1,0 +1,37 @@
+[package]
+name = "neo-reasoning"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Multi-paradigm reasoning engine with planning, reflection, and decision capabilities"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-memory = { path = "../../../memory/rust/neo-memory" }
+neo-knowledge-graph = { path = "../../../knowledge-graph/rust/neo-knowledge-graph" }
+neo-inference = { path = "../../../inference/rust/neo-inference" }
+tokio.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+parking_lot.workspace = true
+dashmap.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+rand.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full", "test-util"] }
+tempfile.workspace = true
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "reasoning_benchmarks"
+harness = false
+
+[lints]
+workspace = true

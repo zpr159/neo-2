@@ -1,0 +1,23 @@
+[package]
+name = "neo-neural-engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — GPU-accelerated neural computation engine"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+serde.workspace = true
+serde_json.workspace = true
+bincode.workspace = true
+uuid.workspace = true
+parking_lot.workspace = true
+chrono.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+proptest.workspace = true
+
+[lints]
+workspace = true

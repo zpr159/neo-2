@@ -1,0 +1,53 @@
+# CI — Nightly benchmark and security scans
+
+name: Nightly
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  NEO_ENV: testing
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Run Rust benchmarks
+        run: cargo bench --workspace -- --output-format bencher | tee benchmarks/results/rust-$(date +%Y%m%d).txt
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmarks-${{ github.run_id }}
+          path: benchmarks/results/
+
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: cargo-fuzz
+      - name: Run fuzz tests
+        run: |
+          for target in $(cargo fuzz list 2>/dev/null || true); do
+            cargo fuzz run "$target" -- -max_total_time=300
+          done
+
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cargo-audit
+        run: cargo install cargo-audit
+      - name: Audit Rust dependencies
+        run: cargo audit
+      - name: Audit Python dependencies
+        run: pip install pip-audit && pip-audit
+      - name: Audit Node.js dependencies
+        run: npx audit-ci --config .audit-ci.jsonc || true

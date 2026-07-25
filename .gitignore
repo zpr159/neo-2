@@ -1,0 +1,100 @@
+# Build artifacts
+/target/
+/build/
+dist/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Rust
+Cargo.lock
+**/*.rs.bk
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+.venv/
+venv/
+env/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.whl
+
+# Node.js
+node_modules/
+.pnpm-store/
+.pnp.*
+
+# TypeScript
+*.tsbuildinfo
+*.js.map
+
+# Java/Kotlin
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+*.class
+*.jar
+*.war
+
+# Swift
+.build/
+.swiftpm/
+DerivedData/
+
+# CUDA
+*.ptx
+*.cubin
+*.fatbin
+
+# IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.code-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+!.env.example
+.neo/config.toml
+
+# Secrets
+config/secrets/*
+!config/secrets/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Temp files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Coverage
+coverage/
+*.cover
+htmlcov/
+lcov.info
+
+# Benchmarks (results are committed, but not generated HTML)
+benchmarks/results/*.html
+
+# Docker
+docker-compose.override.yml

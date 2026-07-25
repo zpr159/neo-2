@@ -1,0 +1,33 @@
+[package]
+name = "neo-executive"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Executive system for goal management, task orchestration, and system-wide decision making"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-runtime = { path = "../../../runtime/rust/neo-runtime" }
+neo-memory = { path = "../../../memory/rust/neo-memory" }
+neo-reasoning = { path = "../../../reasoning/rust/neo-reasoning" }
+neo-inference = { path = "../../../inference/rust/neo-inference" }
+neo-knowledge-graph = { path = "../../../knowledge-graph/rust/neo-knowledge-graph" }
+tokio.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+parking_lot.workspace = true
+dashmap.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full", "test-util"] }
+tempfile.workspace = true
+
+[lints]
+workspace = true

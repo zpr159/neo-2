@@ -1,0 +1,24 @@
+[package]
+name = "neo-security"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Authentication, encryption, and security"
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+tokio.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+sha2.workspace = true
+aes-gcm.workspace = true
+ed25519-dalek.workspace = true
+x25519-dalek.workspace = true
+rand.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

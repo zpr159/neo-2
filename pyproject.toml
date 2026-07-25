@@ -1,0 +1,66 @@
+[build-system]
+requires = ["maturin>=1.5", "setuptools>=69.0"]
+build-backend = "maturin"
+
+[project]
+name = "neo-python"
+version = "0.1.0"
+description = "Neo AGI Operating System — Python Packages Meta"
+readme = "README.md"
+license = {text = "AGPL-3.0-or-later"}
+requires-python = ">=3.11"
+authors = [
+    {name = "Neo AGI Project"}
+]
+keywords = ["agi", "artificial-general-intelligence", "operating-system", "neural", "reasoning"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/neo-agi/neo"
+Documentation = "https://neo-agi.org/docs"
+Repository = "https://github.com/neo-agi/neo"
+Issues = "https://github.com/neo-agi/neo/issues"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "S", "B", "A", "C4", "SIM", "TCH", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["neo"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["*/tests"]
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "slow: marks tests as slow",
+    "integration: marks integration tests",
+    "security: marks security tests",
+]
+
+[tool.coverage.run]
+source = ["neo"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

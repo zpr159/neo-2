@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/schema.json",
+  "name": "neo",
+  "description": "Neo AGI Operating System",
+  "instructions": "You are working on the Neo AGI Operating System — a production-grade AGI runtime. This is a multi-language monorepo. Follow the existing coding conventions for each language. Never add placeholder comments. Every function must be implemented. Run tests before committing.",
+  "model": "big-pickle",
+  "providers": {},
+  "agent": {
+    "maxTurns": 100
+  }
+}

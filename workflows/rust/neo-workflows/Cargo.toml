@@ -1,0 +1,33 @@
+[package]
+name = "neo-workflows"
+description = "Neo AGI OS -- Production-grade workflow orchestration engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+neo-core = { path = "../../../core/rust/neo-core" }
+neo-executive = { path = "../../../executive/rust/neo-executive" }
+neo-capabilities = { path = "../../../capabilities/rust/neo-capabilities" }
+
+tokio.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+dashmap.workspace = true
+parking_lot.workspace = true
+sha2.workspace = true
+strum.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full", "test-util"] }
+tempfile.workspace = true
+
+[lints]
+workspace = true
