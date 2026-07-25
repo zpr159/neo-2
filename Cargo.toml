@@ -1,0 +1,40 @@
+[package]
+name = "neo-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Neo AGI OS — Core primitives, type system, error handling, configuration"
+
+[dependencies]
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+config.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+bitflags.workspace = true
+derive_more.workspace = true
+strum.workspace = true
+reqwest = { version = "0.12", features = ["json", "stream"] }
+futures = "0.3"
+async-trait = "0.1"
+axum = { version = "0.7", features = ["json"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+clap = { version = "4", features = ["derive", "env"] }
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+dashmap = "5.5"
+pin-project-lite = "0.2"
+
+[dev-dependencies]
+tempfile.workspace = true
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "conversation_throughput"
+harness = false

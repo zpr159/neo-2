@@ -1,0 +1,75 @@
+[core]
+name = "neo"
+version = "0.1.0"
+environment = "development"
+data_dir = "./data"
+log_dir = "./logs"
+
+[runtime]
+max_threads = 4
+async_runtime = "tokio"
+shutdown_timeout_secs = 30
+
+[neural]
+enabled = true
+backend = "cpu"
+device = "auto"
+precision = "fp32"
+
+[inference]
+max_batch_size = 32
+timeout_ms = 5000
+cache_size = 1024
+
+[memory]
+max_heap_bytes = 1073741824
+max_stack_bytes = 8388608
+gc_threshold = 0.75
+
+[knowledge_graph]
+enabled = true
+storage_path = "./data/knowledge_graph"
+max_nodes = 1000000
+
+[reasoning]
+engine = "default"
+max_depth = 128
+timeout_ms = 10000
+
+[executive]
+max_concurrent_tasks = 16
+preemption_enabled = true
+
+[agents]
+max_agents = 64
+heartbeat_interval_secs = 10
+
+[security]
+sandbox_default_level = "permissive"
+allowed_permissions = ["read", "write"]
+encryption_enabled = true
+
+[logging]
+level = "info"
+format = "pretty"
+output = "stdout"
+
+[tracing]
+enabled = false
+endpoint = "http://localhost:4317"
+sample_rate = 0.1
+
+[network]
+listen_address = "127.0.0.1"
+listen_port = 7600
+max_connections = 1024
+
+[distributed]
+enabled = false
+node_id = "node-1"
+cluster_peers = []
+
+[plugins]
+enabled = true
+directory = "./plugins"
+auto_load = []
