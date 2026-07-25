@@ -203,9 +203,23 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting. See [security/](secu
 
 ## License
 
-Neo is licensed under the [GNU Affero General Public License v3.0 or later](LICENSE).
+Copyright (c) 2024 Rajesh Pawar. All rights reserved.
 
-This license ensures that all users of Neo — including as a network service — receive the source code and the freedom to study, modify, and redistribute it.
+This software and associated documentation files (the "Software") are
+confidential and proprietary to Rajesh Pawar.
+
+No part of this Software may be reproduced, distributed, modified,
+transmitted, reused, republished, downloaded, or otherwise used in any
+form or by any means without prior written permission from Rajesh Pawar.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
 
 ---
 
