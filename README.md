@@ -2,7 +2,7 @@
 
 > **Version:** 0.1.0 (Foundation)
 > **Status:** Architecture & Foundation
-> **License:** AGPL-3.0-or-later
+> **License:** Copyright (c) 2024 Rajesh Pawar. All rights reserved.
 
 ---
 
