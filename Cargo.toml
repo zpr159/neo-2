@@ -29,7 +29,6 @@ members = [
     "plugins/rust/neo-plugins",
     "testing/rust/neo-test",
     "sdk/rust/neo-sdk",
-    "planning/rust/neo-planning",
     "learning/rust/neo-learning",
     "evolution/rust/neo-evolution",
     "world/rust/neo-world",

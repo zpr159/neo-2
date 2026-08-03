@@ -19,6 +19,8 @@ aes-gcm.workspace = true
 ed25519-dalek.workspace = true
 x25519-dalek.workspace = true
 rand.workspace = true
+chrono.workspace = true
+dashmap.workspace = true
 
 [dev-dependencies]
 tempfile.workspace = true
